@@ -20,13 +20,14 @@ class DSlurpy:
             self.err.shout('No config specified.')
 
         self.config = config
-        try:
-            self.conn = sqlite3.connect(self.config['db_filename'])
-        except:
-            print('Could not connect to database.')
+        # try:
+            # self.conn = sqlite3.connect(self.config['db_filename'])
+        # except:
+            # print('Could not connect to database.')
 
-        self.cur = self.conn.cursor()
-        self.create_db()
+        with sqlite3.connect(self.config['db_filename']) as self.conn:
+            self.cur = self.conn.cursor()
+            self.create_db()
 
     def slurp(self):
         """

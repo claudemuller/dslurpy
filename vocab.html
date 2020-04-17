@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Vocabulary Scores of Males and Females From 1974 to 2016</title>
+        <script type="text/javascript" src="data/vocab.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load('visualization', '1', {packages:['corechart']});
+            google.setOnLoadCallback(drawVocabularyChart);
+            google.setOnLoadCallback(drawEducationChart);
+
+            function drawVocabularyChart() {
+                var data = vocabularyData,
+                    id = 'vocabulary_chart',
+                    title = 'The Difference Between Male and Female Scoring in a Vocabulary Test';
+
+                drawChart(data, id, title);
+            }
+
+            function drawEducationChart() {
+                var data = educationData,
+                    id = 'education_chart',
+                    title = 'The Difference Between Male and Female Number of Scooling Years';
+
+                drawChart(data, id, title);
+            }
+
+            function drawChart(data, id, title) {
+                var data = google.visualization.arrayToDataTable(data);
+
+                var options = {
+                    title,
+                    chartArea: {
+                        left: '10%',
+                        top: '10%',
+                        width: '65%',
+                        height: '65%'}
+                    };
+
+                var chart = new google.visualization.LineChart(document.getElementById(id));
+
+                chart.draw(data, options);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="vocabulary_chart" style="width: 1300px; height: 600px;"></div>
+        <div id="education_chart" style="width: 1300px; height: 600px;"></div>
+    </body>
+</html>

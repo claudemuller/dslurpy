@@ -3,6 +3,7 @@
 import json
 from lib.shout import Shout
 from lib.dslurpy import DSlurpy
+from lib.dvisual import DVisual
 
 err = Shout()
 
@@ -46,8 +47,16 @@ def main():
     result = dslurpy.slurp()
 
     if result:
-        print('Success.')
+        dvisual = DVisual(config)
+        result = dvisual.visualise()
+
+        print('You can view the data from the', config['html_filename'], 'file.')
+
+        if result:
+            print('Success.')
+        else:
+            err.shout('Failure.')
     else:
-        print('Failure.')
+        err.shout('Failure.')
 
 main()
