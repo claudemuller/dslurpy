@@ -9,6 +9,11 @@ class DSlurpy:
     config = ''
 
     def __init__(self, config=None):
+        """
+        Parameters:
+        config (dict): A dictionary containing the config
+        """
+
         self.err = Shout()
 
         if config is None:
@@ -24,6 +29,13 @@ class DSlurpy:
         self.create_db()
 
     def slurp(self):
+        """
+        Use the CsvReader class to retrieve the data and send it to the DB write method
+
+        Returns:
+        bool: Whether or not the method succeeded
+        """
+
         if self.config['data_format'] == 'csv':
             data_reader = CsvReader(self.config['data_filename'])
             data = data_reader.read()
@@ -35,6 +47,16 @@ class DSlurpy:
         return result
 
     def write_db(self, data):
+        """
+        Write the data from the CsvReader class to a SQLite DB
+
+        Parameters:
+        data (list(dict)): The .csv data in list form to be written to the DB
+
+        Returns:
+        bool: Returns True i.e. an empty DB table if there is no data
+        """
+
         count = 0
 
         for d in data:
@@ -51,6 +73,10 @@ class DSlurpy:
         return True
 
     def create_db(self):
+        """
+        Create the DB and truncate the table
+        """
+
         self.cur.executescript('''
         DROP TABLE IF EXISTS vocabulary_scores;
 

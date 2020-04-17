@@ -4,6 +4,13 @@ import sys
 
 class Shout:
     def shout(self, msg='No error message specified.'):
+        """
+        Log error and quit
+
+        Parameters:
+        msg (string): The message to print
+        """
+
         print(msg)
         sys.exit(1)
 

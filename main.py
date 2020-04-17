@@ -7,12 +7,23 @@ from lib.dslurpy import DSlurpy
 err = Shout()
 
 def read_config(filename='config.json'):
+    """
+    Open and parse the config file
+
+    Parameters:
+    filename (string): The filename to open
+    """
+
     with open(filename) as fd:
         config = json.load(fd)
 
     return config
 
 def print_header(config):
+    """
+    Print the welcome header
+    """
+
     print('-----------------------------------------------------')
     print(' Welcome to Data Slurpy.')
     print('')
@@ -24,6 +35,10 @@ def print_header(config):
     input()
 
 def main():
+    """
+    The program entry point
+    """
+
     config = read_config()
     print_header(config)
 

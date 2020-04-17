@@ -5,6 +5,11 @@ from lib.shout import Shout
 
 class CsvReader:
     def __init__(self, filename=None):
+        """
+        Parameters:
+        filename (string): The filename to open from
+        """
+
         self.err = Shout()
 
         if filename is None:
@@ -13,6 +18,13 @@ class CsvReader:
         self.filename = filename
 
     def read(self):
+        """
+        Read in the data from the .csv file
+
+        Returns:
+        list(dict): Returns a list of values per row in the form of dicts
+        """
+
         data = list()
 
         with open(self.filename) as fd:
