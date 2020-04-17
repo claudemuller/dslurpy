@@ -1,18 +1,14 @@
 #!/usr/bin/env python
 
 import json
-from shout import Shout
-from dslurpy import DSlurpy
+from lib.shout import Shout
+from lib.dslurpy import DSlurpy
 
 err = Shout()
 
 def read_config(filename='config.json'):
-    try:
-        fd = open(filename)
-    except:
-        err.shout('The config file is missing.')
-
-    config = json.load(fd)
+    with open(filename) as fd:
+        config = json.load(fd)
 
     return config
 

@@ -1,5 +1,5 @@
 {
     "data_format": "csv",
-    "data_filename": "vocab.csv",
-    "db_filename": "vocab.sqlite"
+    "data_filename": "data/vocab.csv",
+    "db_filename": "data/vocab.sqlite"
 }

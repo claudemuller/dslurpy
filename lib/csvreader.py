@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import csv
-from shout import Shout
+from lib.shout import Shout
 
 class CsvReader:
     def __init__(self, filename=None):

@@ -2,8 +2,8 @@
 
 import sys
 import sqlite3
-from shout import Shout
-from csvreader import CsvReader
+from lib.shout import Shout
+from lib.csvreader import CsvReader
 
 class DSlurpy:
     config = ''
